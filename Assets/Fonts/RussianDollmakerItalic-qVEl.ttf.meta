@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 7b88ca9d844a8434189aff62d3906c3d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Russian Dollmaker
+  fontNames:
+  - Russian Dollmaker
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 71a65b3ecff0c7d48869eedc981ed49e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
