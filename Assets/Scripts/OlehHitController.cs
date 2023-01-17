@@ -28,6 +28,8 @@ public class OlehHitController : MonoBehaviour
     public GameObject playerHeadCol;
 
     public UnityEvent shaken;
+
+    public GameObject[] scoreIcons;
     private void Awake()
     {
         points = 0;
@@ -54,8 +56,16 @@ public class OlehHitController : MonoBehaviour
                 headAnim.SetTrigger("hit");
                 //Debug.Log("JAB");
                 headCol.enabled = false;
-                BonusHit(3, 0);
+                BonusHit(4, 1);
                 AudioController.audioController.Punch(0, 0);
+                if (scoreIcons[0].activeInHierarchy)
+                {
+                    scoreIcons[1].SetActive(true);
+                }
+                else
+                {
+                    scoreIcons[0].SetActive(true);
+                }
             }
         }
         foreach (GameObject cross in crossCol)
@@ -67,13 +77,20 @@ public class OlehHitController : MonoBehaviour
                 headCol.enabled = false;
                 AudioController.audioController.Punch(0, 1);
                 spit.SetActive(true);
-                BonusHit(7, 2);
+                BonusHit(8, 3);
                 CancelPunch();
                 //shaken.Invoke();
                 CamerShake.camerShake.Shake(-.1f, .1f);
+                if (scoreIcons[2].activeInHierarchy)
+                {
+                    scoreIcons[3].SetActive(true);
+                }
+                else
+                {
+                    scoreIcons[2].SetActive(true);
+                }
             }
         }
-
         foreach (GameObject upper in upperCol)
         {
             if (other.gameObject == upper)
@@ -87,11 +104,17 @@ public class OlehHitController : MonoBehaviour
                 CamerShake.camerShake.Shake(-.2f, .2f);
                 CancelPunch();
                 shaken.Invoke();
-                BonusHit(12, 6);
+                BonusHit(13, 7);
+                if (scoreIcons[4].activeInHierarchy)
+                {
+                    scoreIcons[5].SetActive(true);
+                }
+                else
+                {
+                    scoreIcons[4].SetActive(true);
+                }
             }
-        }
-
-        
+        }        
     }
 
     void BonusHit(int amount1, int amount2)

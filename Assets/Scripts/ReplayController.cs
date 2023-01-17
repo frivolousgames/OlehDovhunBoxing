@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class ReplayController : MonoBehaviour
 {
@@ -24,6 +25,13 @@ public class ReplayController : MonoBehaviour
     public GameObject newHighScore;
 
     bool added;
+
+    public GameObject videoCanvas;
+    public VideoPlayer vidPlayer;
+
+    public GameObject crowdPlayer;
+
+    public Animator fadeAnim;
    
     private void Start()
     {
@@ -77,6 +85,23 @@ public class ReplayController : MonoBehaviour
 
     public void QuitGame()
     {
+        StartCoroutine("PlayVideo");
+    }
+
+    IEnumerator PlayVideo()
+    {
+        crowdPlayer.SetActive(false);
+        videoCanvas.SetActive(true);
+        vidPlayer.Prepare();
+        while (!vidPlayer.isPrepared)
+        {
+            yield return null;
+        }
+        vidPlayer.Play();
+        while (vidPlayer.isPlaying)
+        {
+            yield return null;
+        }
         Application.Quit();
     }
     
@@ -106,6 +131,12 @@ public class ReplayController : MonoBehaviour
     }
     public void Retry()
     {
+        fadeAnim.SetTrigger("end");
+    }
+
+    public void RestartLevel()
+    {
         SceneManager.LoadScene("Play");
+
     }
 }

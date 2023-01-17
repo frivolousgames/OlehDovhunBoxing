@@ -118,7 +118,7 @@ public class PlaySceneController : MonoBehaviour
     public void StartGame()
     {
         started = true;
-        blocker.SetActive(false);
+        //blocker.SetActive(false);
     }
 
     public void AcrtivateLosePanel()
